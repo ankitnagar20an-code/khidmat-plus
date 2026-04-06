@@ -1,0 +1,26 @@
+{
+  "name": "khidmat",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web",
+    "lint": "npm run lint --workspace=apps/web",
+    "typecheck": "tsc --noEmit --workspace=apps/web",
+    "generate-types": "npx supabase gen types typescript --local > packages/types/database.ts",
+    "db:reset": "npx supabase db reset",
+    "db:migrate": "npx supabase migration up",
+    "db:seed": "npx supabase db reset --seed-only",
+    "functions:serve": "npx supabase functions serve",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}
